@@ -30,6 +30,7 @@ const renderText = function(ctx, x, y, text, baseline) {
 
 // Функция которая находит лучший результат
 const getMaxElement = function(times) {
+    console.log(times)
     const maxElement = times[0];
     for (let i = 0; i < times.length; i++) {
         if (times[i] > maxElement) {
@@ -40,8 +41,8 @@ const getMaxElement = function(times) {
 };
 
 // Получаем цвет бара
-const getBarColor = function(name) {
-    const barColor = 'rgba(2, 14, 134, ' + Math.random() + ')';
+let getBarColor = function(name) {
+    let barColor = 'rgba(2, 14, 134, ' + Math.random() + ')';
 
     if (name === 'Вы') {
         barColor = 'rgba(255, 0, 0, 1)';
