@@ -4,7 +4,7 @@ const WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', '
 //создаем массив с фамилией
 const WIZARD_SECOND_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 //создаем массив с цветом пальто
-const WIZARD_COAT_COLOR = ['rgb (101, 137, 164)', 'rgb (241, 43, 107)', 'rgb (146, 100, 161)', 'rgb (56, 159, 117)', 'rgb (215, 210, 55)', 'rgb (0, 0, 0)'];
+const WIZARD_COAT_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 //cоздаем массив из цвета глаз
 const WIZARD_EYE_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
 //находим блок setup и удаляем у него класс hidden
@@ -25,34 +25,24 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-
-
-
-const wizards = [{
-        name: WIZARD_NAMES[getRandomInt(WIZARD_NAMES.length)],
-        surname: WIZARD_SECOND_NAMES[getRandomInt(WIZARD_SECOND_NAMES.length)],
-        coatColor: WIZARD_COAT_COLOR[[getRandomInt(WIZARD_COAT_COLOR.length)]],
-        eyesColor: WIZARD_EYE_COLOR[[getRandomInt(WIZARD_EYE_COLOR.length)]]
-    },
-    {
-        name: WIZARD_NAMES[getRandomInt(WIZARD_NAMES.length)],
-        surname: WIZARD_SECOND_NAMES[getRandomInt(WIZARD_SECOND_NAMES.length)],
-        coatColor: WIZARD_COAT_COLOR[[getRandomInt(WIZARD_COAT_COLOR.length)]],
-        eyesColor: WIZARD_EYE_COLOR[[getRandomInt(WIZARD_EYE_COLOR.length)]]
-    },
-    {
-        name: WIZARD_NAMES[getRandomInt(WIZARD_NAMES.length)],
-        surname: WIZARD_SECOND_NAMES[getRandomInt(WIZARD_SECOND_NAMES.length)],
-        coatColor: WIZARD_COAT_COLOR[[getRandomInt(WIZARD_COAT_COLOR.length)]],
-        eyesColor: WIZARD_EYE_COLOR[[getRandomInt(WIZARD_EYE_COLOR.length)]]
-    },
-    {
-        name: WIZARD_NAMES[getRandomInt(WIZARD_NAMES.length)],
-        surname: WIZARD_SECOND_NAMES[getRandomInt(WIZARD_SECOND_NAMES.length)],
-        coatColor: WIZARD_COAT_COLOR[[getRandomInt(WIZARD_COAT_COLOR.length)]],
-        eyesColor: WIZARD_EYE_COLOR[[getRandomInt(WIZARD_EYE_COLOR.length)]]
+//создаем новый массив с (count) количеством случайных магов 
+const createWizards = (count) => {
+    const arr = [];
+    for (let i = 0; i < count; i++) {
+        const obj = {
+            name: WIZARD_NAMES[getRandomInt(WIZARD_NAMES.length)],
+            surname: WIZARD_SECOND_NAMES[getRandomInt(WIZARD_SECOND_NAMES.length)],
+            coatColor: WIZARD_COAT_COLOR[[getRandomInt(WIZARD_COAT_COLOR.length)]],
+            eyesColor: WIZARD_EYE_COLOR[[getRandomInt(WIZARD_EYE_COLOR.length)]]
+        }
+        arr.push(obj)
     }
-];
+    return arr;
+}
+
+
+
+const wizards = createWizards(4);
 
 const renderWizard = function(wizard) {
     const wizardElement = similarWizardTemplate.cloneNode(true);
@@ -71,6 +61,3 @@ for (let i = 0; i < wizards.length; i++) {
 similarListElement.appendChild(fragment);
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
-
-
-console.log(wizards)
