@@ -1,28 +1,28 @@
 'use strict';
 
-var WIZARDS_COUNT = 4;
-var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
-var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
-var ENTER_KEYCODE = 13;
-var ESC_KEYCODE = 27;
+const WIZARDS_COUNT = 4;
+const WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
+const WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
+const COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+const EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+const FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+const ENTER_KEYCODE = 13;
+const ESC_KEYCODE = 27;
 
-var setup = document.querySelector('.setup');
-var setupOpen = document.querySelector('.setup-open');
-var setupOpenIcon = setupOpen.querySelector('.setup-open-icon');
-var setupClose = setup.querySelector('.setup-close');
-var setupWizardForm = setup.querySelector('.setup-wizard-form');
-var setupNameInput = setupWizardForm.querySelector('.setup-user-name');
-var wizardEyes = setupWizardForm.querySelector('.wizard-eyes');
-var wizardCoat = setupWizardForm.querySelector('.wizard-coat');
-var fireballWrap = setupWizardForm.querySelector('.setup-fireball-wrap');
-var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-var similarListElement = setup.querySelector('.setup-similar-list');
+const setup = document.querySelector('.setup');
+const setupOpen = document.querySelector('.setup-open');
+const setupOpenIcon = setupOpen.querySelector('.setup-open-icon');
+const setupClose = setup.querySelector('.setup-close');
+const setupWizardForm = setup.querySelector('.setup-wizard-form');
+const setupNameInput = setupWizardForm.querySelector('.setup-user-name');
+const wizardEyes = setupWizardForm.querySelector('.wizard-eyes');
+const wizardCoat = setupWizardForm.querySelector('.wizard-coat');
+const fireballWrap = setupWizardForm.querySelector('.setup-fireball-wrap');
+const similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
+const similarListElement = setup.querySelector('.setup-similar-list');
 
 // Закрытие окна настроек при нажатии кнопки ESC
-var onPopupEscPress = function(evt) {
+const onPopupEscPress = function(evt) {
     if (evt.keyCode === ESC_KEYCODE) {
         if (evt.target === setupNameInput) {
             evt.stopPropagation();
@@ -33,45 +33,45 @@ var onPopupEscPress = function(evt) {
 };
 
 // Закрытие окна настроек при клике на крестик
-var onSetupCloseClick = function() {
+const onSetupCloseClick = function() {
     closePopup();
 };
 
 // Закрытие окна настроек при нажатии Enter на крестик
-var onSetupCloseEnterPress = function(evt) {
+const onSetupCloseEnterPress = function(evt) {
     if (evt.keyCode === ENTER_KEYCODE) {
         closePopup();
     }
 };
 
 // Получаем случайные данные из массива
-var getRandomItemFromArray = function(array) {
-    var randomItem = array[Math.floor(Math.random() * array.length)];
+const getRandomItemFromArray = function(array) {
+    const randomItem = array[Math.floor(Math.random() * array.length)];
     return randomItem;
 };
 
 // Изменение цвета глаз при клике
-var onWizardEyesClick = function() {
-    var eyesColor = getRandomItemFromArray(EYES_COLORS);
+const onWizardEyesClick = function() {
+    const eyesColor = getRandomItemFromArray(EYES_COLORS);
     wizardEyes.style.fill = eyesColor;
     setupWizardForm.querySelector('input[name=eyes-color]').value = eyesColor;
 };
 
 // Изменение цвета fireball при клике
-var onFireballClick = function() {
-    var fireballColor = getRandomItemFromArray(FIREBALL_COLORS);
+const onFireballClick = function() {
+    const fireballColor = getRandomItemFromArray(FIREBALL_COLORS);
     fireballWrap.style.backgroundColor = fireballColor;
     fireballWrap.querySelector('input').value = fireballColor;
 };
 
 // Изменение цвета плаща при клике
-var onWizardCoatClick = function() {
-    var coatColor = getRandomItemFromArray(COAT_COLORS);
+const onWizardCoatClick = function() {
+    const coatColor = getRandomItemFromArray(COAT_COLORS);
     wizardCoat.style.fill = coatColor;
     setupWizardForm.querySelector('input[name=coat-color]').value = coatColor;
 };
 
-var openPopup = function() {
+const openPopup = function() {
     setup.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
     setupClose.addEventListener('click', onSetupCloseClick);
@@ -81,7 +81,7 @@ var openPopup = function() {
     wizardCoat.addEventListener('click', onWizardCoatClick);
 };
 
-var closePopup = function() {
+const closePopup = function() {
     setup.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
     setupClose.removeEventListener('click', onSetupCloseClick);
@@ -102,10 +102,10 @@ setupOpenIcon.addEventListener('keydown', function(evt) {
 });
 
 // Генерация массива случайных похожих персонажей
-var generateWizards = function(wizardsCount) {
-    var wizardsArray = [];
+const generateWizards = function(wizardsCount) {
+    const wizardsArray = [];
 
-    for (var i = 0; i < wizardsCount; i++) {
+    for (let i = 0; i < wizardsCount; i++) {
         wizardsArray[i] = {
             name: getRandomItemFromArray(WIZARD_NAMES) + ' ' + getRandomItemFromArray(WIZARD_SURNAMES),
             coatColor: getRandomItemFromArray(COAT_COLORS),
@@ -117,8 +117,8 @@ var generateWizards = function(wizardsCount) {
 };
 
 // Создаем элемент
-var makeWizardElement = function(wizard) {
-    var wizardElement = similarWizardTemplate.cloneNode(true);
+const makeWizardElement = function(wizard) {
+    const wizardElement = similarWizardTemplate.cloneNode(true);
 
     wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
     wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
@@ -128,15 +128,15 @@ var makeWizardElement = function(wizard) {
 };
 
 // Функция отрисовки элементов
-var renderWizards = function(wizards) {
-    var fragment = document.createDocumentFragment();
-    for (var i = 0; i < wizards.length; i++) {
+const renderWizards = function(wizards) {
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < wizards.length; i++) {
         fragment.appendChild(makeWizardElement(wizards[i]));
     }
     return fragment;
 };
 
-var wizards = generateWizards(WIZARDS_COUNT);
+const wizards = generateWizards(WIZARDS_COUNT);
 similarListElement.append(renderWizards(wizards));
 
 // Показываем Список похожих персонажей
