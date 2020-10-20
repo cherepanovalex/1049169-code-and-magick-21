@@ -13,7 +13,6 @@ const CHART_Y = CLOUD_Y + 80;
 const BAR_WIDTH = 40;
 const BAR_HEIGHT = 150;
 const BAR_GAP = 50;
-
 // Функция отрисовки окна с результатами
 const renderCloud = function(ctx, x, y, color) {
     ctx.font = '16px PT Mono';

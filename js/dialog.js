@@ -3,7 +3,6 @@
 (function() {
     const ENTER_KEYCODE = 13;
     const ESC_KEYCODE = 27;
-
     const setup = document.querySelector('.setup');
     const setupOpen = document.querySelector('.setup-open');
     const setupOpenIcon = setupOpen.querySelector('.setup-open-icon');

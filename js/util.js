@@ -1,5 +1,4 @@
 'use strict';
-
 (function() {
     window.util = {
         // Получаем случайные данные из массива
