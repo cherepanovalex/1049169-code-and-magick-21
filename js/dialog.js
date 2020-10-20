@@ -3,6 +3,7 @@
 (function() {
     const ENTER_KEYCODE = 13;
     const ESC_KEYCODE = 27;
+
     const setup = document.querySelector('.setup');
     const setupOpen = document.querySelector('.setup-open');
     const setupOpenIcon = setupOpen.querySelector('.setup-open-icon');
@@ -39,19 +40,19 @@
     };
 
     // Перетаскивание окна настроек
-    const onSetupUploadMousedown = function(evt) {
+    let onSetupUploadMousedown = function(evt) {
 
-        const startCoords = {
+        let startCoords = {
             x: evt.clientX,
             y: evt.clientY
         };
 
-        const dragged = false;
+        let dragged = false;
 
-        const onMouseMove = function(moveEvt) {
+        let onMouseMove = function(moveEvt) {
             dragged = true;
 
-            const shift = {
+            let shift = {
                 x: startCoords.x - moveEvt.clientX,
                 y: startCoords.y - moveEvt.clientY
             };
@@ -65,7 +66,7 @@
             setup.style.left = (setup.offsetLeft - shift.x) + 'px';
         };
 
-        const onMouseUp = function() {
+        let onMouseUp = function() {
 
             if (dragged) {
                 const onSetupUploadClick = function(clickEvt) {

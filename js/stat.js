@@ -13,6 +13,7 @@ const CHART_Y = CLOUD_Y + 80;
 const BAR_WIDTH = 40;
 const BAR_HEIGHT = 150;
 const BAR_GAP = 50;
+
 // Функция отрисовки окна с результатами
 const renderCloud = function(ctx, x, y, color) {
     ctx.font = '16px PT Mono';
@@ -58,7 +59,7 @@ window.renderStatistics = function(ctx, names, times) {
     renderText(ctx, WELCOME_TEXT_X, WELCOME_TEXT_Y + GAP * 2, 'Список результатов:', 'hanging');
 
     // Получаем лучший результат
-    const maxTime = getMaxElement(times);
+    let maxTime = getMaxElement(times);
 
     // Рисуем гистограмму
     for (let i = 0; i < names.length; i++) {
